@@ -1,0 +1,37 @@
+.main-page {
+    background: rgb(32, 74, 135);
+}
+.cadastro-paciente__box {
+    background: white;
+    max-width: 992px;
+}
+.cadastro-paciente__header {
+    background: #77B6EA;
+}
+.cadastro-paciente__title {
+    color: #171738;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+.cadastro-paciente__link--dark-grey,
+.cadastro-paciente__link--dark-grey:hover {
+    color: #403D58;
+}
+.cadastro-paciente__link--dark-blue,
+.cadastro-paciente__link--dark-blue:hover {
+    color: #171738;
+}
+.btn-mapp {
+    color: white;
+    background: #403D58;
+    border: 3px solid #FF7F11;
+}
+.btn-outline-mapp {
+    color: #FF7F11;
+    background: white;
+    border: 3px solid #FF7F11;
+}
+.btn-outline-mapp:hover {
+    color: white;
+    background: #FF7F11;
+}

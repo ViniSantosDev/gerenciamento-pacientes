@@ -19,5 +19,5 @@ public class Paciente extends BaseEntity {
 
 
     @Column(name = "Dia", nullable = false)
-    private Calendar diaRealizadoAula;
+    private  String diaRealizadoAula;
 }
