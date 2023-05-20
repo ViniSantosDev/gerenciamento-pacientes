@@ -1,7 +1,6 @@
 package br.com.ViniSantosDev.gerenciamentopacientes.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.Calendar;
 
@@ -11,17 +10,14 @@ import java.util.Calendar;
 @Builder
 @Setter
 @Getter
-@Table(name = "paciente")
+@Table
 @Entity
-public class Paciente {
-    @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    private Long id;
+public class Paciente extends BaseEntity {
 
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false)
     private String nome;
 
 
-    @Column(name = "Dia")
+    @Column(name = "Dia", nullable = false)
     private Calendar diaRealizadoAula;
 }

@@ -10,17 +10,19 @@ import java.util.Calendar;
 @Getter
 public class PacienteDTO {
 
+
+    private String nome;
+    private Calendar diaRealizadoAula;
+
     public PacienteDTO() {
 
     }
-
     public PacienteDTO(Paciente paciente) {
         this.nome = paciente.getNome();
         this.diaRealizadoAula = paciente.getDiaRealizadoAula();
     }
 
-    private String nome;
-    private Calendar diaRealizadoAula;
+
 
 
 }
