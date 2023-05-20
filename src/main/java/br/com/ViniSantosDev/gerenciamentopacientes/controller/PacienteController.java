@@ -13,6 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,6 +25,9 @@ import java.io.IOException;
 public class PacienteController {
 
     private static final String FILE_PATH = "C:\\Excel\\teste.xlsx";
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
 
     @Autowired
@@ -40,6 +46,7 @@ public class PacienteController {
     }
 
     @PostMapping("/excel")
+    @Transactional
     public ResponseEntity<String> enviarExcel(@RequestBody Paciente paciente) {
 
         try {
@@ -48,6 +55,7 @@ public class PacienteController {
                 return ResponseEntity.badRequest().body("O paciente já existe.");
             }
 
+            entityManager.persist(paciente);
             FileInputStream fileIn = null;
             Workbook workbook;
             Sheet sheet;
