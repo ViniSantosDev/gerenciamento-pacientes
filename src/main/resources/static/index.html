@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+
+<title>Marcação de Presença</title>
+</head>
+<body>
+	<div class="main-page">
+		<div class="movieapp__header py-3">
+			<div class="text-center">
+				<h1 class="text-uppercase text-white fw-bold">Marcação de Presença</h1>
+			</div>
+		</div>
+
+		<section class="cadastro-paciente">
+			<div class="container pb-4">
+				<div class="cadastro-paciente__box rounded d-block mx-auto">
+					<div class="cadastro-paciente__header py-2 px-3 rounded-top d-flex align-items-center">
+						<h3 class="cadastro-paciente__title fw-bold mb-0">Controle Presença</h3>
+					</div>
+
+					<form class="cadastro-paciente__form p-4">
+						<div class="row">
+							<div class="col-12 col-md-7">
+								<label for="nome" class="form-label">Nome do Paciente</label>
+								<div class="input-group mb-3">
+									<input
+										type="text" class="form-control" id="nome"
+										 required="required">
+								</div>
+							</div>
+
+
+							<div class="col-12 col-md-6">
+								<label for="diaRealizadoAula" class="form-label">Dia</label>
+								<div class="input-group mb-3">
+								<!-- <select class="form-select">
+										<option value="" selected>Informe a categoria</option>
+										<option value="">Ação</option>
+										<option value="">Anime</option>
+										<option value="">Aventura</option>
+										<option value="">Brasileiros</option>
+										<option value="">Clássicos</option>
+										<option value="">Comédia</option>
+										<option value="">Documentários</option>
+										<option value="">Drama</option>
+										<option value="">Esportes</option>
+										<option value="">Estrangeiros</option>
+										<option value="">Fantasia</option>
+										<option value="">Fé e Espiritualidade</option>
+										<option value="">Ficção Científica</option>
+										<option value="">Hollywood</option>
+										<option value="">Independentes</option>
+										<option value="">LGBTQ</option>
+										<option value="">Música e musicais</option>
+										<option value="">Policial</option>
+										<option value="">Romance</option>
+										<option value="">Suspense</option>
+										<option value="">Terror</option>
+									</select> Selection como sugestão -->
+										 <input type="text" class="form-control"
+										id="diaRealizadoAula" placeholder="Ex.: "
+										required="required">
+								</div>
+							</div>
+							<div class="col-8 col-sm-6 col-md-4 mx-auto mt-2">
+								<button type="button" class="btn btn-outline-mapp w-100" onclick="salvarpaciente()">Salvar</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+
+		function salvarpaciente() {
+			var id = $("#id").val();
+			var nome = $("#nome").val();
+			var diaRealizadoAula = $("#diaRealizadoAula").val();
+
+			$.ajax({
+				method : "POST",
+				url : "pacientes/",
+				data : JSON.stringify({id : id, nome : nome, diaRealizadoAula : diaRealizadoAula}),
+				contentType : "application/json; charset=utf-8",
+				sucess : function(response) {
+					alert("Paciente salvo com sucesso!" + response);
+				}
+			}).fail(function(xhr, status, errorThrown) {
+				alert("Erro ao salvar Paciente:" + xhr.responseText);
+			});
+
+		}
+	</script>
+
+</body>
+</html>

@@ -4,15 +4,13 @@ import br.com.ViniSantosDev.gerenciamentopacientes.entity.Paciente;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Calendar;
-
 @Setter
 @Getter
 public class PacienteDTO {
 
 
     private String nome;
-    private Calendar diaRealizadoAula;
+    private String diaRealizadoAula;
 
     public PacienteDTO() {
 
@@ -21,10 +19,6 @@ public class PacienteDTO {
         this.nome = paciente.getNome();
         this.diaRealizadoAula = paciente.getDiaRealizadoAula();
     }
-
-
-
-
 }
 
 

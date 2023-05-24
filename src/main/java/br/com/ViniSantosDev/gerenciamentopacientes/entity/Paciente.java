@@ -2,22 +2,24 @@ package br.com.ViniSantosDev.gerenciamentopacientes.entity;
 
 import lombok.*;
 import javax.persistence.*;
-import java.util.Calendar;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Builder
 @Setter
 @Getter
 @Table
 @Entity
-public class Paciente extends BaseEntity {
+public class Paciente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "nome", nullable = false)
     private String nome;
 
 
     @Column(name = "Dia", nullable = false)
-    private Calendar diaRealizadoAula;
+    private  String diaRealizadoAula;
 }
