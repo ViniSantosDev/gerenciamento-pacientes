@@ -9,6 +9,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,24 +34,22 @@ public class PacienteController {
     @Autowired
     private PacienteService service;
 
-    @PostMapping()
-    public ResponseEntity<PacienteDTO> criarPaciente(@RequestBody PacienteDTO body) { //criar exceptions customizadas
+    @GetMapping
+    public ResponseEntity<Page<PacienteDTO>> getAllFilme() throws Exception {
         try {
-            PacienteDTO result = service.postPacientes(body);
-            return ResponseEntity.status(HttpStatus.CREATED).body(result);
+            Page<PacienteDTO> result = service.findAllPacientes();
+            return ResponseEntity.status(HttpStatus.OK).body(result);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
-
     }
 
-    @PostMapping("/excel")
+    @PostMapping()
     @Transactional
     public ResponseEntity<String> enviarExcel(@RequestBody Paciente paciente) {
 
         try {
-            // Verifica se o paciente já existe no arquivo
             if (pacienteJaExiste(paciente)) {
                 return ResponseEntity.badRequest().body("O paciente já existe.");
             }
@@ -88,9 +87,6 @@ public class PacienteController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao criar o paciente.");
         }
     }
-
-
-    //TODO: talvez colocar essa logica no service
     private static boolean pacienteJaExiste(Paciente paciente) throws IOException {
         FileInputStream fileIn = new FileInputStream(FILE_PATH);
         Workbook workbook = new XSSFWorkbook(fileIn);
