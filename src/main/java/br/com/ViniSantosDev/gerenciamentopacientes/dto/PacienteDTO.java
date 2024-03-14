@@ -1,13 +1,13 @@
 package br.com.ViniSantosDev.gerenciamentopacientes.dto;
 
 import br.com.ViniSantosDev.gerenciamentopacientes.entity.Paciente;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
-@Setter
-@Getter
+@Builder
+@AllArgsConstructor
 public class PacienteDTO {
-
 
     private String nome;
     private String diaRealizadoAula;
@@ -19,6 +19,13 @@ public class PacienteDTO {
         this.nome = paciente.getNome();
         this.diaRealizadoAula = paciente.getDiaRealizadoAula();
     }
+    
+    public void setDiaRealizadoAula(String diaRealizadoAula) {
+		this.diaRealizadoAula = diaRealizadoAula;
+	}
+    public void setNome(String nome) {
+		this.nome = nome;
+	}
 }
 
 
