@@ -36,28 +36,6 @@ public class PacienteExcelService {
 		return modelMapper.map(pacienteRegistrado, PacienteDTO.class);
 	}
 
-	public Page<PacienteDTO> findAllPacientes() {
-		try {
-			Pageable pageable = PageRequest.of(0, 100);
-			Page<Paciente> pacientes = repository.findAll(pageable);
-			return convertToDTO(pacientes);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
-	}
-
-	public Page<PacienteDTO> convertToDTO(Page<Paciente> pacientes) {
-		return pacientes.map(item -> this.convertToPacienteDTO(item));
-	}
-
-	public PacienteDTO convertToPacienteDTO(Paciente paciente) {
-		PacienteDTO dto = new PacienteDTO();
-		dto.setNome(paciente.getNome());
-		dto.setDiaRealizadoAula(paciente.getDiaRealizadoAula());
-		return dto;
-	}
-
 	public void createExcelWithData(Paciente paciente) throws Exception {
 
 		try {
