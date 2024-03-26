@@ -3,10 +3,7 @@ package br.com.ViniSantosDev.gerenciamentopacientes.service;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Objects;
 
-import org.apache.bcel.Repository;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -23,9 +20,9 @@ import br.com.ViniSantosDev.gerenciamentopacientes.entity.Paciente;
 import br.com.ViniSantosDev.gerenciamentopacientes.repository.PacienteRepository;
 
 @Service
-public class PacienteService {
+public class PacienteExcelService {
 
-	private static final String FILE_PATH = "C:\\Excel\\teste.xlsx";
+	private static final String FILE_PATH = "C:\\Excel\\gerenciamentoPacientes.xlsx";
 
 	@Autowired
 	private PacienteRepository repository;
@@ -91,6 +88,7 @@ public class PacienteService {
 
 			fileOut.close();
 			fileIn.close();
+			workbook.close();
 
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -94,14 +94,13 @@
 	<script type="text/javascript">
 
 		function salvarpaciente() {
-			var id = $("#id").val();
 			var nome = $("#nome").val();
 			var diaRealizadoAula = $("#diaRealizadoAula").val();
 
 			$.ajax({
 				method : "POST",
-				url : "pacientes/",
-				data : JSON.stringify({id : id, nome : nome, diaRealizadoAula : diaRealizadoAula}),
+				url : "pacientes/excel",
+				data : JSON.stringify({nome : nome, diaRealizadoAula : diaRealizadoAula}),
 				contentType : "application/json; charset=utf-8",
 				sucess : function(response) {
 					alert("Paciente salvo com sucesso!" + response);
