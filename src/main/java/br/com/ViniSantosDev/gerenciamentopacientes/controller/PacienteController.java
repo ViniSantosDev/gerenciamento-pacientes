@@ -1,9 +1,6 @@
 package br.com.ViniSantosDev.gerenciamentopacientes.controller;
 
-import java.io.IOException;
-
-import javax.transaction.Transactional;
-
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
