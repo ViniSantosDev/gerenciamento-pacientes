@@ -1,15 +1,17 @@
 package br.com.vinisantosdev.gerenciamentopacientes.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Setter
 @Getter
-@Table
+@Table(name = "paciente")
 @Entity
 public class Patient {
 
@@ -20,6 +22,7 @@ public class Patient {
     @Column(name = "nome", nullable = false)
     private String name;
 
-    @Column(name = "Dia", nullable = false)
-    private LocalDateTime day;
+    @Column(name = "Dia")
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate day;
 }

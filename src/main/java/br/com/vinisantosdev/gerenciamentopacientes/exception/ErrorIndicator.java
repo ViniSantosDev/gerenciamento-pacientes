@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 @Getter
-@Component
 public enum ErrorIndicator {
 
     ERROR_INDICATOR_001("Patient not found", "ERROR_INDICATOR_001", HttpStatus.NOT_FOUND),

@@ -36,8 +36,8 @@ public class ExcelService {
                 String nome = nomeCell.getStringCellValue().trim();
                 String dia = diaCell.getStringCellValue().trim();
 
-                if (pacienteDTO.nome().equalsIgnoreCase(nome)
-                        && pacienteDTO.diaRealizadoAula().toString().equalsIgnoreCase(dia)) {
+                if (pacienteDTO.getNome().equalsIgnoreCase(nome)
+                        && pacienteDTO.getDiaRealizadoAula().toString().equalsIgnoreCase(dia)) {
                     return true;
                 }
             }
@@ -79,8 +79,8 @@ public class ExcelService {
             int lastRow = sheet.getLastRowNum() + 1;
             Row newRow = sheet.createRow(lastRow);
 
-            newRow.createCell(0).setCellValue(pacienteDTO.nome());
-            newRow.createCell(1).setCellValue(pacienteDTO.diaRealizadoAula());
+            newRow.createCell(0).setCellValue(pacienteDTO.getNome());
+            newRow.createCell(1).setCellValue(pacienteDTO.getDiaRealizadoAula());
 
             try (FileOutputStream fos = new FileOutputStream(file)) {
                 workbook.write(fos);
@@ -95,7 +95,7 @@ public class ExcelService {
     }
 
     private void validarPaciente(PatientDTO pacienteDTO) throws BusinessException {
-        if (pacienteDTO == null || pacienteDTO.nome() == null || pacienteDTO.diaRealizadoAula() == null) {
+        if (pacienteDTO == null || pacienteDTO.getNome() == null) {
             throw new BusinessException(
                     ErrorIndicator.ERROR_INDICATOR_001);
         }
