@@ -1,7 +1,8 @@
-package br.com.ViniSantosDev.gerenciamentopacientes.entity;
+package br.com.vinisantosdev.gerenciamentopacientes.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
-import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -10,16 +11,15 @@ import javax.persistence.*;
 @Getter
 @Table
 @Entity
-public class Paciente {
+public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "nome", nullable = false)
-    private String nome;
-
+    private String name;
 
     @Column(name = "Dia", nullable = false)
-    private  String diaRealizadoAula;
+    private LocalDateTime day;
 }
