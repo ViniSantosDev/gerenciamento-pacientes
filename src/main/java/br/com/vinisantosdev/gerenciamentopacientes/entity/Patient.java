@@ -19,10 +19,9 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome", nullable = false)
-    private String name;
+    @Column(name = "NOME")
+    private String nome;
 
     @Column(name = "Dia")
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate day;
+    private String day;
 }
